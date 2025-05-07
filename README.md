@@ -1,28 +1,38 @@
-# 🌲 Cypress, do Zero à Nuvem ☁️
+# Cypress, do Zero à Nuvem ☁️
 
-👋 Seja bem-vindo(a)!
+[![main](https://github.com/brunotineli/cypress-do-zero-a-nuvem/actions/workflows/ci.yml/badge.svg)](https://github.com/brunotineli/cypress-do-zero-a-nuvem/actions)
 
-É muito bom tê-lo(a) aqui. Tenho certeza que você vai amar esse curso. ❤️
+Projeto usado no curso "Cypress, do Zero à Nuvem" da escola online Talking About Testing.
 
-## O que você vai aprender?
+## Pré-requisitos
 
-- Como configurar um projeto Cypress do zero
-- Como visitar páginas locais e remotas
-- Como lidar com os elementos mais comuns encontrados em aplicações web
-- Como testar upload de arquivos
-- Como realizar as mais diversas verificações de resultados esperados
-- Como criar comandos customizados
-- Como lidar com links que abrem em outra aba do navegador
-- Como rodar testes simulando as dimensões de um dispositivo móvel
-- Como resolver os mesmos problemas de diferentes formas, conhecendo a [API do Cypress](https://docs.cypress.io/api/table-of-contents)
-- Como criar uma documentação mínima para seu projeto de testes automatizados
-- Como executar os testes em um _workflow_ de integração contínua sempre que mudanças ocorrerem no código da aplicação (ou dos testes)
-- Como integrar seu _workflow_ de integração contínua com o Cypress Cloud (o serviço de gestão de testes do Cypress na nuvem)
+É necessário ter o Node.js e npm instalados para rodar este projeto.
 
-## Vamos começar?
+> Eu usei as versões `v20.19.1` and `10.8.2` do Node.js e npm, respectivamente. Sugiro usar as versões mencionadas ou superiores.
 
-Vá para a seção [estrutura do curso](./lessons/_course-structure_.md).
+## Instalação
 
-___
+Execute `npm install` (ou `npm i`) para instalar todas as dependências de desenvolvimento.
 
-Este é um curso da **Escola Talking About Testing**.
+## Testes
+
+É possível executar os testes simulando dimensões de tela tamano desktop ou mesmo de dispositivos móveis.
+
+Desktop: 1280x880
+Dispositivo móvel: 860x410
+
+### Desktop viewport
+
+Execute `npm test` (ou `npm t`) para executar os testes no modo headless.
+
+Ou, execute `npm run cy:open` para abrir o Cypress no modo interativo.
+
+### Mobile viewport
+
+Execute `npm test:mobile`para executar os testes no modo headless.
+
+Ou, execute `npm run cy:open:mobile` para abrir o Cypress no modo interativo.
+
+## Ajude este projeto
+
+Se você quiser ajudar este projeto, deixe uma ⭐.
