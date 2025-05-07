@@ -3,8 +3,11 @@ describe('Central de Atendimento ao Cliente TAT - Política de Privacidade', () 
     cy.visit('./src/privacy.html')
   })
 
-  it('Verifica o título da aplicação', () => {
-    cy.title()
-        .should('be.equal', 'Central de Atendimento ao Cliente TAT - Política de Privacidade')
+  Cypress._.times(2, () => {
+    it('Verifica o título da aplicação', () => {
+      cy.title()
+          .should('be.equal', 'Central de Atendimento ao Cliente TAT - Política de Privacidade')
+    })
   })
+  
 })

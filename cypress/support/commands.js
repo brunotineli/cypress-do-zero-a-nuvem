@@ -81,8 +81,21 @@ Cypress.Commands.add('verifySucessMessage', () => {
         .and('contain.text', 'Mensagem enviada com sucesso.')
 })
 
+Cypress.Commands.add('verifySucessMessageNotVisible', () => {
+    cy.get('.success')
+        .should('not.be.visible')
+        .and('contain.text', 'Mensagem enviada com sucesso.')
+})
+
 Cypress.Commands.add('verifyErrorMessage', () => {
     cy.get('.error')
         .should('be.visible')
         .and('contain.text', 'Valide os campos obrigatórios!')
 })
+
+Cypress.Commands.add('verifyErrorMessageNotVisible', () => {
+    cy.get('.error')
+        .should('not.be.visible')
+        .and('contain.text', 'Valide os campos obrigatórios!')
+})
+

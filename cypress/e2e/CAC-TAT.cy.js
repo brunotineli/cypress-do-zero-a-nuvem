@@ -165,4 +165,73 @@ describe('Central de Atendimento ao Cliente TAT', () => {
     cy.title()
         .should('be.equal', 'Central de Atendimento ao Cliente TAT - Política de Privacidade')
   })
+
+  it('Verifica que a mensagem de sucesso é exibida por 3 segundos', () => {
+    cy.clock()
+    cy.fillMandatoryFieldsAndSubmit(
+      Cypress.env('first_name'),
+      Cypress.env('last_name'),
+      Cypress.env('email'),
+      Cypress.env('suggestions'))
+    cy.verifySucessMessage()
+
+    cy.tick(2999)
+    cy.verifySucessMessage()
+
+    cy.tick(1)
+    cy.verifySucessMessageNotVisible()
+  })
+
+  it('Verifica que a mensagem de erro é exibida por 3 segundos', () => {
+    cy.clock()
+    cy.fillMandatoryFieldsAndSubmit(
+      Cypress.env('first_name'),
+      Cypress.env('last_name'),
+      'bt',
+      Cypress.env('suggestions'))
+    cy.verifyErrorMessage()
+
+    cy.tick(2999)
+    cy.verifyErrorMessage()
+
+    cy.tick(1)
+    cy.verifyErrorMessageNotVisible()
+  })
+
+  it('Preenche a area de texto usando o comando invoke ao invés do type + lodash', () => {
+    const longText = Cypress._.repeat('123', 50)
+    cy.get('#open-text-area')
+        .invoke('val', longText)
+        .should('have.value', longText)
+  })
+
+  it('Faz uma requisição HTTP', () => {
+    cy.request('https://cac-tat.s3.eu-central-1.amazonaws.com/index.html')
+      .should((response) => {
+        const { status, statusText, body } = response
+          expect(status).to.be.equal(200)
+          expect(statusText).to.be.equal('OK')
+          expect(body).to.include('CAC TAT')
+      })
+  })
+
+  it('Exibe e oculta as mensagens de sucesso e erro usando .invoke()', () => {
+    cy.get('.success')
+      .invoke('show')
+      .verifySucessMessage()
+      .invoke('hide')
+      .verifySucessMessageNotVisible()
+
+    cy.get('.error')
+      .invoke('show')
+      .verifyErrorMessage()
+      .invoke('hide')
+      .verifyErrorMessageNotVisible()
+  })
+
+  it('Encontra o gato na aplicação e o torna visível', () => {
+    cy.get('#cat')
+      .invoke('show')
+      .should('be.visible')
+  })
 })
