@@ -52,13 +52,6 @@ Cypress.Commands.add('fillProduct', (product) => {
         .should('have.value', product.toLowerCase())
 })
 
-Cypress.Commands.add('fillSupportType', (support_type) => {
-    cy.get('input[type="radio"][value="' + support_type + '"]')
-        .should('be.visible')
-        .check()
-        .should('be.checked')
-})
-
 Cypress.Commands.add('fillPreferentialContact', (preferential_contact) => {
     cy.get('input[type="checkbox"]')
         .should('be.visible')
