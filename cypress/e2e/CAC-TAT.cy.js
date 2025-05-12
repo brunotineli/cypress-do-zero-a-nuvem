@@ -118,9 +118,9 @@ describe('Central de Atendimento ao Cliente TAT', () => {
         .should('have.length', 3)
         .each(($radio) => {
             if ($radio.text() === 'Elogio') {
-                cy.wrap($radio)
-                    .check()
-                    .should('be.checked')
+              cy.wrap($radio)
+                .check()
+                .should('be.checked')
             }
         })
   })
